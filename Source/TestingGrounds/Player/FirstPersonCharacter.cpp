@@ -51,6 +51,9 @@ void AFirstPersonCharacter::BeginPlay()
 	Gun = GetWorld()->SpawnActor<AGun>(GunBlueprint);
 	Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
 
+	Gun->AnimInstance = Mesh1P->GetAnimInstance();
+	InputComponent->BindAction("Fire", IE_Pressed, Gun, &AGun::OnFire);
+
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -73,6 +76,8 @@ void AFirstPersonCharacter::SetupPlayerInputComponent(class UInputComponent* Pla
 	// Bind movement events
 	PlayerInputComponent->BindAxis("MoveForward", this, &AFirstPersonCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AFirstPersonCharacter::MoveRight);
+
+	
 
 	// We have 2 versions of the rotation bindings to handle different kinds of devices differently
 	// "turn" handles devices that provide an absolute delta, such as a mouse.

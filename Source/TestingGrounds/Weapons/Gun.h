@@ -27,8 +27,7 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-	/** Fires a BallProjectile. */
-	void OnFire();
+
 
 public:
 	// Called every frame
@@ -52,6 +51,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	class UAnimInstance* AnimInstance;
+
+	/** Fires a BallProjectile. */
+	void OnFire();
 
 	
 };
