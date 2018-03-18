@@ -53,6 +53,7 @@ public:
 	class UAnimInstance* AnimInstance;
 
 	/** Fires a BallProjectile. */
+	UFUNCTION(BlueprintCallable, Category = "Input")
 	void OnFire();
 
 	
